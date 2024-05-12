@@ -1,0 +1,93 @@
+@startuml
+
+class User {
+  -UserId: string
+  -password: string
+}
+
+class Admin {
+  -AdminId: string
+  -password: string
+}
+
+class Customer {
+  -CustomerID: string
+  -email: string
+  -password: string
+  -FirstName: string
+  -LastName: string
+  -CNIC# : int
+  -Phonenumber : int
+  -address: string
+  -city : string
+  -state : string
+  -zipcode: int
+  -paymentMethods: string[]
+}
+class Review {
+  -reviewId: string
+  -customerId: string
+  -businessId: string
+  -vendorId: string
+  -staffId: string
+  -rating: int
+  -comment: string
+  -feedback: string
+}
+class EventBusiness {
+  -businessId: string
+  -businessName: string
+  -password: string
+  -VenueInfo: string
+  -hostingCapacity: int
+  -Phonenumber : int
+  -email:string
+  -pricing: float
+  -location: string
+  -address: string
+  -city : string
+  -state : string
+  -zipcode: int
+  -ServicesInfo: string[]
+}
+
+class Vendor {
+  -vendorId: string
+  -VendorName: string
+  -password: string
+  -Phonenumber : int
+  -servicesInfo: string
+  -pricing: float
+  -location: string
+  -city : string
+  -state : string
+  -zipcode: int
+}
+
+class Staff {
+  -staffId: string
+  -password: string
+  -FirstName: string
+  -LastName: string
+  -CNIC#: int
+  -city : string
+  -state : string
+  -zipcode: int
+  -experience: string
+  -pricing: float
+  -WorkingHours: string
+}
+
+
+
+User "1" -- "1..*" Customer
+User "1" -- "1..*" EventBusiness
+User "1" -- "1..*" Vendor
+User "1" -- "1..*" Staff
+Admin "1" -- "1" User
+Review "1..*" -- "1" Customer
+Review "1..*" -- "1" EventBusiness
+Review "1..*" -- "1" Vendor
+Review "1..*" -- "1" Staff
+
+@enduml
